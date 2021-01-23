@@ -6,12 +6,12 @@ class Board extends Component {
     constructor(props) {
         super(props)
     }
-    
+
     render() {
         const cells = this.props.cellValues.map((value, index) => {
             const canHighlight = this.props.winningCombination && 
                                  this.props.winningCombination.indexOf(index) >= 0; 
-            return <Cell value={value} key={index} canHighlight={canHighlight}/>
+            return <Cell value={value} key={index} canHighlight={canHighlight} onClick={() => this.props.cellClicked(index)}/>
         }); 
 
         return (

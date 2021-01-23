@@ -3,14 +3,18 @@ import Board from '../Board/Board';
 import '../../App.css'; 
 
 const Game = () => {
-    const cellValues = ['X', 'X', 'X', 'O', 'O', 'X', 'O', "", ""]
-    const winningCombination = [0, 1, 2]
+    const cellValues = ['', '', '', '', '', '', '', "", ""]
+    const winningCombination = []
+
+    const cellClicked = (cellIndex) => {
+        console.log(`Cell ${cellIndex} clicked. `)
+    }
 
     return (
         <>
         <div id="game">
             <h1>Tic Tac Toe</h1>
-            <Board cellValues={cellValues} winningCombination={winningCombination}/>
+            <Board cellValues={cellValues} winningCombination={winningCombination} cellClicked={cellClicked}/>
         </div>
 
         <div id="modal-overlay">
