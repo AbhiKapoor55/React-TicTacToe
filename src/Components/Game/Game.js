@@ -4,12 +4,17 @@ import '../../App.css';
 
 const Game = () => {
     const [cellValues, setCellValues] = useState(['', '', '', '', '', '', '', "", ""])
+    const [xIsNext, setXIsNext] = useState(true); 
     const winningCombination = []
 
     const cellClicked = (cellIndex) => {
         const newCellValues = [...cellValues]; 
-        newCellValues[cellIndex] = 'X'
-        setCellValues(newCellValues); 
+
+        if(newCellValues[cellIndex] === '') {
+            newCellValues[cellIndex] = xIsNext ? 'X' : 'O'
+            setCellValues(newCellValues); 
+            setXIsNext(!xIsNext); 
+        }
     }
 
     return (
