@@ -3,9 +3,17 @@ import Cell from '../Cell/Cell';
 import './Board.css';
 
 class Board extends Component {
+    constructor(props) {
+        super(props)
+    }
+    
     render() {
-        const cellValues = ['X', 'X', 'X', 'O', 'O', 'X', 'O', "", ""]
-        const cells = cellValues.map((value, index) => <Cell value={value} key={index} canHighlight={false}/>)
+        const cells = this.props.cellValues.map((value, index) => {
+            const canHighlight = this.props.winningCombination && 
+                                 this.props.winningCombination.indexOf(index) >= 0; 
+            return <Cell value={value} key={index} canHighlight={canHighlight}/>
+        }); 
+
         return (
             <div id="board">
                 {cells}
