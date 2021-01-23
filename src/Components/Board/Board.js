@@ -4,17 +4,11 @@ import './Board.css';
 
 class Board extends Component {
     render() {
+        const cellValues = ['X', 'X', 'X', 'O', 'O', 'X', 'O', "", ""]
+        const cells = cellValues.map((value, index) => <Cell value={value} key={index} canHighlight={false}/>)
         return (
             <div id="board">
-                <Cell value="X" canHighlight={true}/>
-                <Cell value="X" canHighlight={true}/>
-                <Cell value="X" canHighlight={true}/>
-                <Cell value="O" canHighlight={false}/>
-                <Cell value="O" canHighlight={false}/>
-                <Cell value="X" canHighlight={false}/>
-                <Cell value="O" canHighlight={false}/>
-                <Cell value="" canHighlight={false}/>
-                <Cell value="" canHighlight={false}/>
+                {cells}
             </div>
         );
     }

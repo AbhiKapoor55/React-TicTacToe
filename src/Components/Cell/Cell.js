@@ -8,15 +8,15 @@ class Cell extends Component {
     }
 
     render() {
-        let cellClasses = 'cell'; 
-        let cellContentClasses = 'cell-content'; 
+        // let cellClasses = 'cell'; 
+        // let cellContentClasses = 'cell-content'; 
 
-        if(this.props.canHighlight) {
-            cellClasses += ' winner'
-        }
-        if(this.props.value){
-            cellContentClasses =+ ' populated'
-        }
+        // if(this.props.canHighlight) {
+        //     cellClasses += ' winner'
+        // }
+        // if(this.props.value){
+        //     cellContentClasses =+ ' populated'
+        // }
 
         return (
             <button className={this.props.canHighlight ? 'cell winner' : 'cell'}>
