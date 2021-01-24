@@ -9,9 +9,7 @@ const Game = () => {
     const [xIsNext, setXIsNext] = useState(true); 
     const winningCombination = []
     const [isGameOver, setIsGameOver] = useState(false); 
-    //this.state = { isGameOver: false }
-
-    
+    const [numberOfTurnsLeft, setNumberOfTurnsLeft] = useState(9); 
 
     const cellClicked = (cellIndex) => {
         const newCellValues = [...cellValues]; 
@@ -19,12 +17,14 @@ const Game = () => {
         if(newCellValues[cellIndex] === '') {
             newCellValues[cellIndex] = xIsNext ? 'X' : 'O'
 
+            const newNumberOfTurnsleft = numberOfTurnsLeft - 1; 
             // Calculate the result 
-            const calcResult = calculateWinner(newCellValues, cellIndex); 
+            const calcResult = calculateWinner(newCellValues, newNumberOfTurnsleft, cellIndex); 
 
             setCellValues(newCellValues); 
             setXIsNext(!xIsNext); 
             setIsGameOver(calcResult.hasResult); 
+            setNumberOfTurnsLeft(newNumberOfTurnsleft);
         }
     }
 
