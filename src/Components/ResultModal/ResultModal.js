@@ -17,7 +17,7 @@ class ResultModal extends Component {
                         </div>
                     </div>
                     <div id="new-game-container">
-                        <button id="new-game-button">Start New Game</button>
+                        <button id="new-game-button" onClick={this.props.onNewGameClicked}>Start New Game</button>
                     </div>
                 </div>
         </div>

@@ -5,7 +5,7 @@ import calculateWinner from '../../Utils/Utils';
 import '../../App.css'; 
 
 const Game = () => {
-    const [cellValues, setCellValues] = useState(['', '', '', '', '', '', '', "", ""])
+    const [cellValues, setCellValues] = useState(['', '', '', '', '', '', '', '', ''])
     const [xIsNext, setXIsNext] = useState(true); 
     const winningCombination = []
     const [isGameOver, setIsGameOver] = useState(false); 
@@ -30,13 +30,21 @@ const Game = () => {
         }
     }
 
+    const restartGame = () => {
+        setCellValues(['', '', '', '', '', '', '', '', '']); 
+        setXIsNext(true); 
+        setIsGameOver(false); 
+        setNumberOfTurnsLeft(9);
+        setWinner(undefined)
+    }
+
     return (
         <>
             <div id="game">
                 <h1>Tic Tac Toe</h1>
                 <Board cellValues={cellValues} winningCombination={winningCombination} cellClicked={cellClicked}/>
             </div>
-            <ResultModal isGameOver={isGameOver} winner={winner}/>
+            <ResultModal isGameOver={isGameOver} winner={winner} onNewGameClicked={restartGame}/>
         </>
     );
 } 
