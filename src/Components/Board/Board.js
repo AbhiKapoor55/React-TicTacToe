@@ -3,10 +3,6 @@ import Cell from '../Cell/Cell';
 import './Board.css';
 
 class Board extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         const cells = this.props.cellValues.map((value, index) => {
             const canHighlight = this.props.winningCombination && 

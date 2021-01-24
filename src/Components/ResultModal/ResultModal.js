@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import '../../Components/Cell/Cell.css';
 
 class ResultModal extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         const message = this.props.winner ? `Winner is ${this.props.winner}.` : "It is a tie"; 
         return (
