@@ -7,12 +7,13 @@ class ResultModal extends Component {
     }
 
     render() {
+        const message = this.props.winner ? `Winner is ${this.props.winner}.` : "It is a tie"; 
         return (
             <div id="modal-overlay" className={this.props.isGameOver ? 'modal-open' : ''}>
                 <div id="game-result-modal">
                     <div id="result-container">
                         <div id="winner-container">
-                            <span></span>
+                            <span>{message}</span>
                         </div>
                     </div>
                     <div id="new-game-container">

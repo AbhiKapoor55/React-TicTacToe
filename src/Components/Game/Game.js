@@ -10,6 +10,7 @@ const Game = () => {
     const winningCombination = []
     const [isGameOver, setIsGameOver] = useState(false); 
     const [numberOfTurnsLeft, setNumberOfTurnsLeft] = useState(9); 
+    const [winner, setWinner] = useState(); 
 
     const cellClicked = (cellIndex) => {
         const newCellValues = [...cellValues]; 
@@ -25,6 +26,7 @@ const Game = () => {
             setXIsNext(!xIsNext); 
             setIsGameOver(calcResult.hasResult); 
             setNumberOfTurnsLeft(newNumberOfTurnsleft);
+            setWinner(calcResult.winner)
         }
     }
 
@@ -34,7 +36,7 @@ const Game = () => {
                 <h1>Tic Tac Toe</h1>
                 <Board cellValues={cellValues} winningCombination={winningCombination} cellClicked={cellClicked}/>
             </div>
-            <ResultModal isGameOver={isGameOver}/>
+            <ResultModal isGameOver={isGameOver} winner={winner}/>
         </>
     );
 } 
