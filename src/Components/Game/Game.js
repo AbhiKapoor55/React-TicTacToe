@@ -1,41 +1,40 @@
 import React, { useState } from 'react'; 
 import Board from '../Board/Board';
+import ResultModal from '../ResultModal/ResultModal';
+import calculateWinner from '../../Utils/Utils';
 import '../../App.css'; 
 
 const Game = () => {
     const [cellValues, setCellValues] = useState(['', '', '', '', '', '', '', "", ""])
     const [xIsNext, setXIsNext] = useState(true); 
     const winningCombination = []
+    const [isGameOver, setIsGameOver] = useState(false); 
+    //this.state = { isGameOver: false }
+
+    
 
     const cellClicked = (cellIndex) => {
         const newCellValues = [...cellValues]; 
 
         if(newCellValues[cellIndex] === '') {
             newCellValues[cellIndex] = xIsNext ? 'X' : 'O'
+
+            // Calculate the result 
+            const calcResult = calculateWinner(newCellValues, cellIndex); 
+
             setCellValues(newCellValues); 
             setXIsNext(!xIsNext); 
+            setIsGameOver(calcResult.hasResult); 
         }
     }
 
     return (
         <>
-        <div id="game">
-            <h1>Tic Tac Toe</h1>
-            <Board cellValues={cellValues} winningCombination={winningCombination} cellClicked={cellClicked}/>
-        </div>
-
-        <div id="modal-overlay">
-            <div id="game-result-modal">
-                <div id="result-container">
-                    <div id="winner-container">
-                        <span></span>
-                    </div>
-                </div>
-                <div id="new-game-container">
-                    <button id="new-game-button">Start New Game</button>
-                </div>
+            <div id="game">
+                <h1>Tic Tac Toe</h1>
+                <Board cellValues={cellValues} winningCombination={winningCombination} cellClicked={cellClicked}/>
             </div>
-        </div>
+            <ResultModal isGameOver={isGameOver}/>
         </>
     );
 } 

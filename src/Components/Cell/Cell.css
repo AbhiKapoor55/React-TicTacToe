@@ -40,4 +40,8 @@
     bottom: 0;
     background: var(--modal-overlay-color);
   }
+
+  #modal-overlay.modal-open {
+      display: grid; 
+  }
   
